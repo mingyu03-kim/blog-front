@@ -9,5 +9,13 @@ module.exports = defineConfig({
       importStrategy: 'kebab',
       rtlSupport: false
     }
-  }
+  },
+  devServer: {
+    proxy: {      
+      '/user': {
+          target: 'http://localhost:8080/',
+          changeOrigin: true // cross origin 허용 
+      }
+    }
+}
 })

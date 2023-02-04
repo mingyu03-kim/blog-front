@@ -82,7 +82,8 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
 import HelloWorld from './components/HelloWorld.vue'
 
 export default {
@@ -93,9 +94,16 @@ export default {
   },
 
   setup () {
+    onMounted(async () => {
+      console.log('test');
+      const res = await axios.get('/user/get')
+      console.log(res);
+    })
+
     return {
       leftDrawerOpen: ref(false)
     }
+
   }
 }
 </script>
